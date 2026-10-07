@@ -1,0 +1,61 @@
+.workspace .canvas-wrap { position: relative; }
+.ws-stage { position: relative; width: fit-content; margin: 0 auto; }
+.ws-stage .canvas-container { margin: 0; }
+
+.ws-hover { position: absolute; pointer-events: none; outline: 1.5px dashed color-mix(in srgb, var(--accent) 70%, transparent); outline-offset: 3px; border-radius: 3px; }
+
+.ws-pending {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  border-radius: 6px;
+  outline: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--panel) 65%, transparent);
+  animation: ws-pulse 1.6s ease-in-out infinite;
+}
+.ws-pending span { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; font-size: 0.8rem; white-space: nowrap; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+@keyframes ws-pulse { 50% { outline-color: color-mix(in srgb, var(--accent) 35%, transparent); } }
+
+.ws-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  z-index: 2;
+}
+.ws-overlay > strong { font-size: 1.05rem; }
+.ws-overlay > .muted { max-width: 420px; }
+.ws-overlay-dim { background: color-mix(in srgb, var(--bg) 70%, transparent); cursor: progress; }
+
+.ws-save { display: inline-flex; align-items: center; gap: 6px; padding: 0 4px; }
+.ws-save-error { color: var(--danger); }
+
+.ws-zoom { min-width: 58px; font-variant-numeric: tabular-nums; font-size: 0.85rem; }
+
+.ws-link { background: none; border: none; padding: 0 2px; color: var(--accent); font-size: inherit; text-decoration: underline; justify-self: start; }
+.ws-link:hover:not(:disabled) { border: none; }
+
+.ws-help { margin: -4px 0 0; }
+.ws-selcount { margin: 0; padding: 8px 10px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 10%, var(--panel)); }
+.inspector button.ws-danger { color: var(--danger); }
+.inspector button.ws-danger:hover:not(:disabled) { border-color: var(--danger); }
+.inspector button.primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+
+.ws-hints p { margin: 0; }
+.ws-hints ul { margin: 0; padding-left: 1.1em; color: var(--muted); display: grid; gap: 5px; }
+.ws-hints b { color: var(--ink); font-weight: 600; }
+.ws-hints kbd, .inspector kbd {
+  font: 0.75rem ui-monospace, Menlo, monospace;
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink);
+}
